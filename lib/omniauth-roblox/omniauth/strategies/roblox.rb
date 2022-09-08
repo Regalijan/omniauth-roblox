@@ -40,7 +40,6 @@ module OmniAuth
       info do
         {
           name: raw_info['name'],
-          email: "#{SecureRandom.hex(18)}@notre.al",
           nickname: user_info['nickname'],
           image: image_url,
           # This is provided in the `profile` claim, but is not included if the `profile` scope is not set
