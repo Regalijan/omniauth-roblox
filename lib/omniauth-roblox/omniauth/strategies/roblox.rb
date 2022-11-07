@@ -16,7 +16,7 @@ module OmniAuth
       option :name, 'roblox'
 
       option :client_options,
-             authorize_url: 'https://authorize.roblox.com/',
+             authorize_url: 'v1/authorize',
              site: 'https://apis.roblox.com/oauth',
              token_url: 'v1/token'
 
