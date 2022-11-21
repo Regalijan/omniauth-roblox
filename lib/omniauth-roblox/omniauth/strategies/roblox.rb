@@ -20,7 +20,6 @@ module OmniAuth
              site: 'https://apis.roblox.com/oauth',
              token_url: 'v1/token'
 
-      option :jwt_leeway, 60
       option :authorize_options, %i[consent login selectAccount]
       option :image_type, 'headshot'
       option :skip_image, false
