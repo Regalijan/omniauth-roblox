@@ -25,5 +25,4 @@ end
 ## Configuration Options
 - `scope`: No scopes are currently set by default, Roblox requires the `openid` scope at the minimum.
 - `image_type`: The type of image that should be returned by roblox, defaults to `headshot`. Allowed values: `[empty string]` (full body), `bust`, and `headshot`.
-- `jwt_leeway`: Amount of leeway in seconds passed to the JWT library, only works with version 2.1 or earlier.
 - `skip_image`: If this is set to `true`, no image url will be returned.
