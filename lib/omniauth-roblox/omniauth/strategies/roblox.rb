@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
+require 'base64'
 require 'json'
-require 'jwt'
 require 'net/http'
 require 'omniauth/strategies/oauth2'
 require 'uri'
@@ -51,7 +51,11 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= ::JWT.decode(access_token['id_token'], nil, false).first
+        @raw_info ||= JSON.parse(
+          Base64.urlsafe_decode(
+            access_token['id_token'].split('.')[1]
+          )
+        )
 
         return if @raw_info['name']
 
