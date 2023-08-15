@@ -3,9 +3,9 @@
 require File.expand_path('lib/omniauth-roblox/version', __dir__)
 
 Gem::Specification.new do |gem|
-  gem.authors = ['Wolftallemo']
+  gem.authors = ['Regalijan']
   gem.files = `git ls-files`.split("\n")
-  gem.homepage = 'https://github.com/Wolftallemo/omniauth-roblox'
+  gem.homepage = 'https://github.com/Regalijan/omniauth-roblox'
   gem.license = 'MIT'
   gem.name = 'omniauth-roblox'
   gem.required_ruby_version = '>= 2.7.2'
