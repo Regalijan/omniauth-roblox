@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    omniauth-roblox (0.0.4)
+    omniauth-roblox (0.0.5)
       omniauth (~> 2.1)
       omniauth-oauth2 (~> 1.8)
 
@@ -63,6 +63,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
