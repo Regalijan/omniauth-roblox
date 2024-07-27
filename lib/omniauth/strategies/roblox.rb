@@ -36,7 +36,7 @@ module OmniAuth
         {
           name: raw_info['name'],
           nickname: user_info['nickname'],
-          image: image_url,
+          image: raw_info['picture'],
           # This is provided in the `profile` claim, but is not included if the `profile` scope is not set
           urls: { website: "https://www.roblox.com/users/#{uid}/profile" }
         }
@@ -69,28 +69,6 @@ module OmniAuth
       # Roblox currently does not allow third parties to access user emails, this is only added for completeness
       def verified_email
         raw_info['email_verified'] ? raw_info['email'] : nil
-      end
-
-      def image_url # rubocop:disable Metrics
-        return nil if options[:skip_image]
-
-        url = 'https://thumbnails.roblox.com/v1/users/avatar'
-        url_additions = {
-          bust: '-bust',
-          headshot: '-headshot'
-        }
-        uri = URI(url + url_additions[options[:image_type]])
-        uri.query = URI.encode_www_form({
-                                          userIds: raw_info['sub'],
-                                          size: '720x720',
-                                          format: 'Png',
-                                          isCircular: 'false'
-                                        })
-
-        res = Net::HTTP.get_response(uri)
-        data = JSON.parse(res.body).data.first
-
-        res.is_a?(Net::HTTPSuccess) ? data.imageUrl : nil
       end
     end
   end
