@@ -48,7 +48,7 @@ module OmniAuth
 
       def raw_info
         @raw_info ||= JSON.parse(
-          Base64.urlsafe_decode(
+          Base64.urlsafe_decode64(
             access_token['id_token'].split('.')[1]
           )
         )
