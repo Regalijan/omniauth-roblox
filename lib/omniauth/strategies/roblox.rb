@@ -3,15 +3,11 @@
 require 'base64'
 require 'json'
 require 'net/http'
-require 'omniauth/strategies/oauth2'
+require 'omniauth-oauth2'
 require 'uri'
 
 module OmniAuth
   module Strategies
-    # This is the Roblox OAuth/OIDC strategy
-    # Currently their API is in private beta
-    # If you are enrolled, you may register
-    # at https://create.roblox.com/credentials
     class Roblox < OmniAuth::Strategies::OAuth2
       option :name, 'roblox'
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path('lib/omniauth-roblox/version', __dir__)
+require File.expand_path('lib/omniauth/version', __dir__)
 
 Gem::Specification.new do |gem|
   gem.authors = ['Regalijan']
