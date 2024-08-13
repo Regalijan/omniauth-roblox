@@ -2,9 +2,7 @@
 
 require 'base64'
 require 'json'
-require 'net/http'
 require 'omniauth-oauth2'
-require 'uri'
 
 module OmniAuth
   module Strategies
@@ -17,8 +15,6 @@ module OmniAuth
              token_url: 'v1/token'
 
       option :authorize_options, %i[consent login selectAccount]
-      option :image_type, 'headshot'
-      option :skip_image, false
 
       def authorize_params # rubocop:disable Metrics/AbcSize
         super.tap do |params|
@@ -52,18 +48,6 @@ module OmniAuth
             access_token['id_token'].split('.')[1]
           )
         )
-
-        return if @raw_info['name']
-
-        user_api_res = Net::HTTP.get_response(URI("https://users.roblox.com/v1/users/#{uid}"))
-
-        # The Roblox Users API returns usernames under the `name` property
-        # Unlike the id_token where it is the display name
-        return unless user_api_res.is_a?(Net::HTTPSuccess)
-
-        api_data = JSON.parse(user_api_res.body)
-        @raw_info['nickname'] = api_data['name']
-        @raw_info['name'] = api_data['displayName']
       end
 
       # Roblox currently does not allow third parties to access user emails, this is only added for completeness
