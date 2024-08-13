@@ -14,18 +14,6 @@ module OmniAuth
              site: 'https://apis.roblox.com/oauth',
              token_url: 'v1/token'
 
-      option :authorize_options, %i[consent login selectAccount]
-
-      def authorize_params # rubocop:disable Metrics/AbcSize
-        super.tap do |params|
-          options[:authorize_options].each do |k|
-            params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
-          end
-
-          session['omniauth.state'] = params[:state] if params[:state]
-        end
-      end
-
       uid { raw_info['sub'] }
 
       info do
