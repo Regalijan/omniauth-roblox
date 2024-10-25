@@ -26,5 +26,3 @@ end
 
 ## Configuration Options
 - `scope`: No scopes are currently set by default, Roblox requires the `openid` scope at the minimum.
-- `image_type`: The type of image that should be returned by roblox, defaults to `headshot`. Allowed values: `[empty string]` (full body), `bust`, and `headshot`.
-- `skip_image`: If this is set to `true`, no image url will be returned.
