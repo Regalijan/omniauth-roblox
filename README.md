@@ -25,4 +25,4 @@ end
 ```
 
 ## Configuration Options
-- `scope`: No scopes are currently set by default, Roblox requires the `openid` scope at the minimum.
+- `scope`: The `openid` and `profile` scopes are set by default.
