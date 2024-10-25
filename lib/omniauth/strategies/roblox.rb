@@ -14,6 +14,8 @@ module OmniAuth
              site: 'https://apis.roblox.com/oauth',
              token_url: 'v1/token'
 
+      option :authorize_options, %i[scope consent login selectAccount]
+
       uid { raw_info['sub'] }
 
       info do
@@ -44,7 +46,17 @@ module OmniAuth
       end
 
       def callback_url
-				options[:redirect_uri] || (full_host + script_name + callback_path)
+	      options[:redirect_uri] || (full_host + script_name + callback_path)
+      end
+
+      def authorize_params
+        super.tap do |params|
+          options[:authorize_options].each do |option|
+            params[option] = request.params[option.to_s] if request.params[options.to_s]
+          end
+
+          params[:scope] ||= DEFAULT_SCOPE
+        end
       end
     end
   end
